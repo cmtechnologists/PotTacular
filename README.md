@@ -2,15 +2,10 @@
 Pothole Reporting
 # Team members: 
 Grant Stromgren - https://github.com/phpsmith
-
 Ashu  - 
-
 Glenn Holt - https://github.com/glennholt
-
 Bryson Rafael
-
 Jon Garrity - https://github.com/reasonaut
-
 Travis Moret - https://github.com/TroubleTravis
 
 

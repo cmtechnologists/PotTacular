@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.572
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pottacular-api", "pottacular-api\pottacular-api.csproj", "{AF16FCD2-7FFA-4D5F-8BF8-86A6319F7DEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pottacular-api", "pottacular-api\pottacular-api.csproj", "{AF16FCD2-7FFA-4D5F-8BF8-86A6319F7DEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pottacular-api.Tests", "pottacular-api.Tests\pottacular-api.Tests.csproj", "{18AD6BB3-385B-4E65-A086-08313AE206E2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F3D9B170-5FEE-4EBB-A1DA-FFD4412865A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +19,16 @@ Global
 		{AF16FCD2-7FFA-4D5F-8BF8-86A6319F7DEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF16FCD2-7FFA-4D5F-8BF8-86A6319F7DEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF16FCD2-7FFA-4D5F-8BF8-86A6319F7DEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18AD6BB3-385B-4E65-A086-08313AE206E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18AD6BB3-385B-4E65-A086-08313AE206E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18AD6BB3-385B-4E65-A086-08313AE206E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18AD6BB3-385B-4E65-A086-08313AE206E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{18AD6BB3-385B-4E65-A086-08313AE206E2} = {F3D9B170-5FEE-4EBB-A1DA-FFD4412865A6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BD671D96-23B1-492E-B54C-CE152DC44991}

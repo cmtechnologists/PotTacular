@@ -1,0 +1,7 @@
+.vs*
+*.pubxml
+*.DotSettings.user
+*.user
+obj
+bin
+packages

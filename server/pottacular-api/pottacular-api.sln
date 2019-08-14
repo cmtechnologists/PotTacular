@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pottacular-api", "pottacular-api.csproj", "{E028F3E5-27E1-40A9-B8CE-85BEF8D3068A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pottacular-api.Tests", "..\pottacular-api.Tests\pottacular-api.Tests.csproj", "{5CD3FA2F-1847-4AE3-B349-91410AB78B2D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E028F3E5-27E1-40A9-B8CE-85BEF8D3068A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E028F3E5-27E1-40A9-B8CE-85BEF8D3068A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E028F3E5-27E1-40A9-B8CE-85BEF8D3068A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E028F3E5-27E1-40A9-B8CE-85BEF8D3068A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CD3FA2F-1847-4AE3-B349-91410AB78B2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CD3FA2F-1847-4AE3-B349-91410AB78B2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CD3FA2F-1847-4AE3-B349-91410AB78B2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CD3FA2F-1847-4AE3-B349-91410AB78B2D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {91611101-F86E-496F-B706-2F7E55E0107F}
+	EndGlobalSection
+EndGlobal

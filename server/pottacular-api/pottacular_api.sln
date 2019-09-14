@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pottacular-api", "pottacular-api\pottacular-api.csproj", "{AF16FCD2-7FFA-4D5F-8BF8-86A6319F7DEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pottacular_api", "pottacular-api\pottacular_api.csproj", "{AF16FCD2-7FFA-4D5F-8BF8-86A6319F7DEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pottacular-api.Tests", "pottacular-api.Tests\pottacular-api.Tests.csproj", "{18AD6BB3-385B-4E65-A086-08313AE206E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pottacular_api.Tests", "pottacular-api.Tests\pottacular_api.Tests.csproj", "{18AD6BB3-385B-4E65-A086-08313AE206E2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F3D9B170-5FEE-4EBB-A1DA-FFD4412865A6}"
 EndProject

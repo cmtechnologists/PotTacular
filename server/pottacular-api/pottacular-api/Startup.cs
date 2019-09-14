@@ -10,21 +10,31 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using pottacular_api.Models;
+using pottacular_api.Services;
 
 namespace pottacular_api
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; set; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<PottacularDatabaseSettings>(
+            Configuration.GetSection(nameof(PottacularDatabaseSettings)));
+
+            services.AddSingleton<IPottacularDatabaseSettings>(sp =>
+                sp.GetRequiredService<IOptions<PottacularDatabaseSettings>>().Value);
+
+            services.AddSingleton<TestRequestService>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -39,9 +49,8 @@ namespace pottacular_api
             {
                 app.UseHsts();
             }
-
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseMvc();            
         }
     }
 }

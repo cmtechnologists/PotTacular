@@ -3,16 +3,17 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using pottacular_api.Controllers;
+using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Mvc;
 
 namespace pottacular_api.Tests.Controllers
 {
     [TestClass]
     public class ValueControllerTests
-    {
+    {   
         [TestMethod]
         public void Get()
-        {
+        {   
             //// Arrange
             ValuesController controller = new ValuesController();
 

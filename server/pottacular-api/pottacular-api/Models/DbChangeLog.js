@@ -5,8 +5,8 @@
 // >load("dbchangelog.js")
 var db = connect("mongodb://localhost:27017/PottacularDb"),
     initialData = null;
-db.createCollection('TestRequest');
-db.TestRequest.insertMany([
+db.createCollection('TestRequests');
+db.TestRequests.insertMany([
     {
         'TestRequestName': 'test insert 1'
     },

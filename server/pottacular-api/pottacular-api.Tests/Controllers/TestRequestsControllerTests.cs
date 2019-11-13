@@ -8,6 +8,7 @@ using pottacular_api.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace pottacular_api.Controllers.Tests
@@ -38,12 +39,24 @@ namespace pottacular_api.Controllers.Tests
             settings.ConnectionString = settings.ConnectionString.Replace("pottacular-api_mongo_1", "localhost");
             TestRequestService _testRequestService = new TestRequestService(settings);
             TestRequestsController controller = new TestRequestsController(_testRequestService);
-            
+
+            // minimum satisfying response data
+            List<TestRequest> expectedValue = new List<TestRequest>();
+            expectedValue.Add(new TestRequest { TestRequestName = "test insert 1" });
+            expectedValue.Add(new TestRequest { TestRequestName = "test insert 2" });
             // Act
-            ActionResult<List<TestRequest>> result = controller.Get();
+            ActionResult<List<TestRequest>> response = controller.Get();
+            ActionResult<TestRequest> resultData = controller.Get("1");
 
             // Assert
-            Assert.IsNotNull(result);
+            Assert.IsNotNull(response);
+            Assert.IsTrue(expectedValue.Contains(response.Value
+                .Where(x => x.TestRequestName == "test insert 1").SingleOrDefault()));
+            Assert.IsTrue(expectedValue.Contains(response.Value
+                .Where(x => x.TestRequestName == "test insert 2").SingleOrDefault()));
+            Assert.AreEqual(resultData.Value.TestRequestName, "test insert 1");
+
+            
         }
         public string TraverseToParentN(string currentFilePath, int nthParent)
         {

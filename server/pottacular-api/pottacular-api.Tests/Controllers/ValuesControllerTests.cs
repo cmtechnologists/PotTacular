@@ -14,14 +14,14 @@ namespace pottacular_api.Tests.Controllers
         [TestMethod]
         public void Get()
         {   
-            //// Arrange
+            // Arrange
             ValuesController controller = new ValuesController();
 
-            //// Act
+            // Act
             ActionResult<IEnumerable<string>> result = controller.Get();
             ActionResult<string> result2 = controller.Get(1);
 
-            //// Assert
+            // Assert
             Assert.IsNotNull(result);
             IEnumerable<string> expectedValue = new string[] { "value1", "value2" };
             Assert.IsTrue(System.Linq.Enumerable.SequenceEqual(result.Value, expectedValue));

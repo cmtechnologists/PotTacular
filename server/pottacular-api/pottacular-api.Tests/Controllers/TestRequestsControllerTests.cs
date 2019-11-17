@@ -44,7 +44,7 @@ namespace pottacular_api.Tests.Controllers
             PottacularDatabaseSettings settings = configureDbConnection();
             TestRequestService _testRequestService = new TestRequestService(settings);
             TestRequestsController controller = new TestRequestsController(_testRequestService);
-            TestRequest createRequest = new TestRequest { TestRequestName = "test insert 3 by api" };
+            TestRequest createRequest = new TestRequest { TestRequestName = "test insert 3 by client" };
 
             // Act
             ActionResult<TestRequest> createResponse = controller.Create(createRequest).Result;
@@ -52,7 +52,7 @@ namespace pottacular_api.Tests.Controllers
 
             // Assert
             Assert.AreEqual(createRouteResult.StatusCode, 201);
-            Assert.AreEqual((createRouteResult.Value as TestRequest).TestRequestName, "test insert 3 by api");
+            Assert.AreEqual((createRouteResult.Value as TestRequest).TestRequestName, "test insert 3 by client");
         }
         [TestMethod()]
         public void ModifyTest()
@@ -63,14 +63,14 @@ namespace pottacular_api.Tests.Controllers
             TestRequestsController controller = new TestRequestsController(_testRequestService);
 
             // Act
-            TestRequest recordToModify = controller.Get().Value.Where(tr => tr.TestRequestName == "test insert 3 by api").FirstOrDefault();
-            recordToModify.TestRequestName = "test insert 3 by api (modified)";
+            TestRequest recordToModify = controller.Get().Value.Where(tr => tr.TestRequestName == "test insert 3 by client").FirstOrDefault();
+            recordToModify.TestRequestName = recordToModify.TestRequestName + "(testUpdate)";
             NoContentResult modifyResponse = controller.Update(recordToModify.TestRequestId, recordToModify) as NoContentResult;
             TestRequest modifiedRecord = controller.Get().Value.Where(tr => tr.TestRequestId == recordToModify.TestRequestId).FirstOrDefault();
 
             // Assert
             Assert.AreEqual(modifyResponse.StatusCode, 204);
-            Assert.IsTrue(modifiedRecord.TestRequestName.Contains("(modified)"));
+            Assert.IsTrue(modifiedRecord.TestRequestName.Contains("(testUpdate)"));
         }
         [TestMethod()]
         public void DeleteTest()
@@ -81,8 +81,15 @@ namespace pottacular_api.Tests.Controllers
             TestRequestsController controller = new TestRequestsController(_testRequestService);
             // get record to delete
             List<TestRequest> resultData = controller.Get().Value;
-            TestRequest recordToDelete = resultData.Where(tr => tr.TestRequestName == "test insert 3 by api (modified)").FirstOrDefault();
-
+            if (!resultData.Any(rd => rd.TestRequestName.Contains("(testUpdate)"))) {
+                ActionResult<TestRequest> createResponse = controller.Create(new TestRequest 
+                    { 
+                    TestRequestName =  "test insert to delete(testUpdate)"
+                    }).Result;
+                resultData = controller.Get().Value;
+            }
+            TestRequest recordToDelete = resultData.Where(tr => tr.TestRequestName.Contains("(testUpdate)")).FirstOrDefault();
+            
             // Act
             NoContentResult deleteResponse = controller.Delete(recordToDelete.TestRequestId) as NoContentResult;
             ActionResult<TestRequest> requestDeletedRecord = controller.Get(recordToDelete.TestRequestId);

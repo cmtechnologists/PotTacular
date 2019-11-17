@@ -10,6 +10,8 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: Xavi3r42.718
+    volumes:
+      - ./Models/DbChangeLog.js:/docker-entrypoint-initdb.d/DbChangeLog.js:ro
 
   mongo-express:
     image: mongo-express

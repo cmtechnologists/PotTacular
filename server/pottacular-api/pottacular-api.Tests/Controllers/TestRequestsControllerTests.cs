@@ -27,7 +27,7 @@ namespace pottacular_api.Tests.Controllers
             
             // Act
             ActionResult<List<TestRequest>> response = controller.Get();
-            ActionResult<TestRequest> resultData = controller.Get("5dd1613555e0663203286230");
+            ActionResult<TestRequest> resultData = controller.Get(response.Value[0].TestRequestId);
             
             // Assert
             // controller response

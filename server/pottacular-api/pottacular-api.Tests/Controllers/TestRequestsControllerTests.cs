@@ -39,24 +39,22 @@ namespace pottacular_api.Controllers.Tests
             settings.ConnectionString = settings.ConnectionString.Replace("pottacular-api_mongo_1", "localhost");
             TestRequestService _testRequestService = new TestRequestService(settings);
             TestRequestsController controller = new TestRequestsController(_testRequestService);
-
-            // minimum satisfying response data
+            // minimum satisfying response data to verify successful db api interaction
             List<TestRequest> expectedValue = new List<TestRequest>();
             expectedValue.Add(new TestRequest { TestRequestName = "test insert 1" });
             expectedValue.Add(new TestRequest { TestRequestName = "test insert 2" });
+            
             // Act
             ActionResult<List<TestRequest>> response = controller.Get();
-            ActionResult<TestRequest> resultData = controller.Get("1");
+            ActionResult<TestRequest> resultData = controller.Get("5dd1613555e0663203286230");
 
             // Assert
+            // controller response
             Assert.IsNotNull(response);
-            Assert.IsTrue(expectedValue.Contains(response.Value
-                .Where(x => x.TestRequestName == "test insert 1").SingleOrDefault()));
-            Assert.IsTrue(expectedValue.Contains(response.Value
-                .Where(x => x.TestRequestName == "test insert 2").SingleOrDefault()));
-            Assert.AreEqual(resultData.Value.TestRequestName, "test insert 1");
-
-            
+            // expected test data presence
+            Assert.IsTrue(expectedValue[0].TestRequestName == response.Value[0].TestRequestName);
+            Assert.IsTrue(expectedValue[1].TestRequestName == response.Value[1].TestRequestName);
+            Assert.AreEqual(resultData.Value.TestRequestName, "test insert 1");            
         }
         public string TraverseToParentN(string currentFilePath, int nthParent)
         {

@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>pottacular_api</name>
+    </assembly>
+    <members>
+        <member name="M:pottacular_api.Controllers.TestRequestsController.Get">
+            <summary>
+            Get a list of all TestRequests in the collection
+            </summary>
+            <returns>An ActionResult of type List of type TestRequest</returns>
+        </member>
+        <member name="M:pottacular_api.Controllers.TestRequestsController.Get(System.String)">
+            <summary>
+            Get a TestRequest by id
+            </summary>
+            <param name="id">The id (24 digit hex string) of the TestRequest you want to retrieve</param>
+            <returns>A JSON doc of the requested TestRequest or 404</returns>
+        </member>
+        <member name="M:pottacular_api.Controllers.TestRequestsController.Create(pottacular_api.Models.TestRequest)">
+            <summary>
+            Create a new TestRequest
+            </summary>
+            <param name="testRequest">The name of the TestRequest</param>
+            <returns>201</returns>
+        </member>
+        <member name="M:pottacular_api.Controllers.TestRequestsController.Update(System.String,pottacular_api.Models.TestRequest)">
+            <summary>
+            Update a TestRequest by id
+            </summary>
+            <param name="id">The id (24 digit hex string) of the TestRequest you want to update</param>
+            <param name="testRequestIn">The values to update the TestRequest with</param>
+            <returns>204 or 404</returns>
+            <remarks>
+            Sample request updating the requested document's TestRequestName value \
+            PUT /api/TestRequests \
+            [ \
+                { \
+                    "testrequestid": "5dd33e6578adb2721066a780",
+                    "testrequestname": "my new request name"
+                } \
+            ]
+            </remarks>
+        </member>
+        <member name="M:pottacular_api.Controllers.TestRequestsController.Delete(System.String)">
+            <summary>
+            Delete a TestRequest by id
+            </summary>
+            <param name="id">The id (24 digit hex string) of the TestRequest you want to delete</param>
+            <returns>204 or 404</returns>
+        </member>
+        <member name="T:pottacular_api.Models.TestRequest">
+            <summary>
+            A MongoDb collection used to test API interactions as features like containers, orchestration, CI/CD, and scalability are added
+            </summary>
+        </member>
+        <member name="P:pottacular_api.Models.TestRequest.TestRequestId">
+            <summary>
+            The id of the TestRequest
+            </summary>
+        </member>
+        <member name="P:pottacular_api.Models.TestRequest.TestRequestName">
+            <summary>
+            The name of the TestRequest
+            </summary>
+        </member>
+    </members>
+</doc>

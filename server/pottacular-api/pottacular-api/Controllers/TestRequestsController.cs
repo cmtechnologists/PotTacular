@@ -18,11 +18,18 @@ namespace pottacular_api.Controllers
         {
             _testRequestService = testRequestService;
         }
-
+        /// <summary>
+        /// Get a list of all TestRequests in the collection
+        /// </summary>
+        /// <returns>An ActionResult of type List of type TestRequest</returns>
         [HttpGet]
         public ActionResult<List<TestRequest>> Get() =>
                 _testRequestService.Get();
-
+        /// <summary>
+        /// Get a TestRequest by id
+        /// </summary>
+        /// <param name="id">The id (24 digit hex string) of the TestRequest you want to retrieve</param>
+        /// <returns>A JSON doc of the requested TestRequest or 404</returns>
         [HttpGet("{id:length(24)}", Name = "GetTestRequest")]
         public ActionResult<TestRequest> Get(string id)
         {
@@ -33,14 +40,33 @@ namespace pottacular_api.Controllers
             }
                 return testRequest;
         }
-
+        /// <summary>
+        /// Create a new TestRequest
+        /// </summary>
+        /// <param name="testRequest">The name of the TestRequest</param>
+        /// <returns>201</returns>
         [HttpPost]
         public ActionResult<TestRequest> Create(TestRequest testRequest)
         {
             _testRequestService.Create(testRequest);
             return CreatedAtRoute("GetTestRequest", new { id = testRequest.TestRequestId.ToString() }, testRequest);
         }
-
+        /// <summary>
+        /// Update a TestRequest by id
+        /// </summary>
+        /// <param name="id">The id (24 digit hex string) of the TestRequest you want to update</param>
+        /// <param name="testRequestIn">The values to update the TestRequest with</param>
+        /// <returns>204 or 404</returns>
+        /// <remarks>
+        /// Sample request updating the requested document's TestRequestName value \
+        /// PUT /api/TestRequests \
+        /// [ \
+        ///     { \
+        ///         "testrequestid": "5dd33e6578adb2721066a780",
+        ///         "testrequestname": "my new request name"
+        ///     } \
+        /// ]
+        /// </remarks>
         [HttpPut("{id:length(24)}")]
         public IActionResult Update(string id, TestRequest testRequestIn)
         {
@@ -52,7 +78,11 @@ namespace pottacular_api.Controllers
                 _testRequestService.Update(testRequest.TestRequestId, testRequestIn);
             return NoContent();
         }
-
+        /// <summary>
+        /// Delete a TestRequest by id
+        /// </summary>
+        /// <param name="id">The id (24 digit hex string) of the TestRequest you want to delete</param>
+        /// <returns>204 or 404</returns>
         [HttpDelete("{id:length(24)}")]
         public IActionResult Delete(string id)
         {

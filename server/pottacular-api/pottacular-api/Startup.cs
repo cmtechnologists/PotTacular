@@ -13,6 +13,8 @@ using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Hosting;
 using pottacular_api.Models;
 using pottacular_api.Services;
+using System.Reflection;
+using System.IO;
 
 namespace pottacular_api
 {
@@ -47,8 +49,18 @@ namespace pottacular_api
                     new Microsoft.OpenApi.Models.OpenApiInfo()
                     {
                         Title = "Pottacular API",
-                        Version = "1"
+                        Version = "1",
+                        Description = "A street pothole location and image reporting API to provide crowd" + 
+                            " sourced information to city maintenance departments.",
+                        Contact = new Microsoft.OpenApi.Models.OpenApiContact()
+                        {
+                            Name = "Central Minnesota Technologists",
+                            Url = new Uri("https://github.com/cmtechnologists/PotTacular/tree/4-scaffold-back-end-core")
+                        }
                     });
+                var xmlCommentsFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentsFile);
+                setupAction.IncludeXmlComments(xmlCommentsFullPath);
             });
         }
 
